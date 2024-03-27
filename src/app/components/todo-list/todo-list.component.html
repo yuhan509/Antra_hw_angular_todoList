@@ -1,0 +1,18 @@
+<!-- <p>todo-list works!</p> -->
+<div>
+    <input placeholder="Search by id" type="text" [(ngModel)]="searchedId" > 
+    <button (click) = "search(searchedId)"> Search </button>
+    <button (click) = "getAll()"> Find All </button>
+</div>
+<ul>
+    @for(todo of (todos | slice:0:10); track todo) {
+        <li>
+            <div>Title : {{todo.title || "" | summaryTitle : 4}}</div> 
+            <div>id : {{todo.id}}</div>
+            <div>userId : {{todo.userId}}</div>
+            <div>completed : {{todo.completed}}</div>
+            <div> <a [routerLink]="getDetailUrl(todo)" > details </a> </div>
+            <hr>
+        </li>
+    }
+</ul>
